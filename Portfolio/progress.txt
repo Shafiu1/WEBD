@@ -1,3 +1,5 @@
 
 
-Day 3: Added contact.html with form, made nav columnar for mobile screen.
+Day 3: Added contact.html with form, made nav columnar  for mobile screen.
+Day 4: Added Google font, Media Query
+Day 5: 

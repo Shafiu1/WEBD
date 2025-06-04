@@ -1,130 +1,157 @@
-/* Basic page styles for consistency */
+/* Basic page styles */
 body {
-    font-family: 'Roboto', Arial, sans-serif; /* Use Google Fonts */
-    margin: 0;
-    padding: 0;
-    color: #333; /* Default text color */
-  }
-  
-  header, footer {
-    background-color: #d3f2fd; /* Light blue background */
-    padding: 20px;
-    text-align: center;
-  }
-  
-  main {
-    margin: 20px;
-    max-width: 800px; /* Center content with max width */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  h1 {
-    font-size: 2.5rem; /* Larger heading */
-    color: #1976d2; /* Darker blue for headings */
-  }
-  
-  h2 {
-    font-size: 1.8rem;
-    color: #1976d2;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 1rem;
-    line-height: 1.6; /* Better readability */
-  }
-  
-  /* Style for all sections */
-  section {
-    border: 1px solid #ccc; /* Subtle border */
-    padding: 15px;
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 20px;
-  }
-  
-  /* Navigation styles */
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header, footer {
+  background-color: #e3f2fd; /* Light blue */
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  margin: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #1976d2; /* Blue */
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #1976d2;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Section styles */
+section {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease; /* Smooth hover */
+}
+
+section:hover {
+  background-color: #f5f5f5; /* Light grey on hover */
+}
+
+/* Navigation styles */
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  gap: 30px; /* Space between links */
+}
+
+nav ul li {
+  margin: 0; /* Remove margin, use gap */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #1976d2;
+  background-color: #e3f2fd; /* Light blue on hover */
+}
+
+nav ul li a.active {
+  /* My custom active color */
+  color: #a13239; /* Red (customize here) */
+  background-color: #bbdefb; /* Light blue background */
+  font-weight: bold;
+}
+
+nav ul li a:focus {
+  outline: 2px solid #1976d2; /* Accessibility */
+  outline-offset: 2px;
+}
+
+/* Form styles (contact.html) */
+#contact {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, textarea {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+/* Mobile-responsive styles */
+@media (max-width: 768px) {
   nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
-  }
-  
-  nav ul li {
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  nav ul li a:hover {
-    color: #1976d2; /* Match heading color on hover */
-  }
-  
-  /* Form styles (for contact.html) */
-  #contact {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  form {
-    display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
+    align-items: center;
+    gap: 15px; /* Smaller gap on mobile */
   }
-  
-  label {
-    margin-top: 10px;
-    font-weight: bold;
+
+  nav ul li {
+    margin-bottom: 0;
   }
-  
-  input, textarea {
-    margin-top: 5px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+  h1 {
+    font-size: 2rem;
   }
-  
-  button {
-    margin-top: 10px;
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
     padding: 10px;
-    background-color: #1976d2; /* Match heading color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
   }
-  
-  button:hover {
-    background-color: #1565c0; /* Darker blue on hover */
+
+  main {
+    margin: 10px;
   }
-  
-  /* Mobile-responsive navigation */
-  @media (max-width: 768px) {
-    nav ul {
-      flex-direction: column; /* Stack links vertically */
-      align-items: center;
-    }
-  
-    nav ul li {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    h1 {
-      font-size: 2rem; /* Smaller heading on mobile */
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    section {
-      padding: 10px; /* Less padding on mobile */
-    }
-  }
+}
