@@ -42,7 +42,7 @@ section {
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
-  transition: background-color 0.3s ease; /* Smooth hover */
+  transition: background-color 0.3s ease;
 }
 
 section:hover {
@@ -55,11 +55,11 @@ nav ul {
   list-style: none;
   padding: 0;
   justify-content: center;
-  gap: 30px; /* Space between links */
+  gap: 30px;
 }
 
 nav ul li {
-  margin: 0; /* Remove margin, use gap */
+  margin: 0;
 }
 
 nav ul li a {
@@ -73,18 +73,18 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #1976d2;
-  background-color: #e3f2fd; /* Light blue on hover */
+  background-color: #e3f2fd;
 }
 
 nav ul li a.active {
   /* My custom active color */
-  color: #a13239; /* Red (customize here) */
-  background-color: #bbdefb; /* Light blue background */
+  color: #d32f2f; /* Red */
+  background-color: #bbdefb;
   font-weight: bold;
 }
 
 nav ul li a:focus {
-  outline: 2px solid #1976d2; /* Accessibility */
+  outline: 2px solid #1976d2;
   outline-offset: 2px;
 }
 
@@ -127,12 +127,14 @@ button:hover {
   background-color: #1565c0;
 }
 
-/* Mobile-responsive styles */
+/* Responsive styles */
+
+/* Medium screens (tablets, 481px–768px) */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Smaller gap on mobile */
+    gap: 15px;
   }
 
   nav ul li {
@@ -147,11 +149,69 @@ button:hover {
     font-size: 1.5rem;
   }
 
+  p {
+    font-size: 0.95rem;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  main {
+    margin: 15px;
+  }
+
+  form {
+    max-width: 350px;
+  }
+}
+
+/* Small screens (phones, <480px) */
+@media (max-width: 480px) {
+  /* My custom mobile header color */
+  header {
+    background-color: #b3e5fc; /* Lighter blue */
+    padding: 15px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
   section {
     padding: 10px;
+    margin-bottom: 15px;
   }
 
   main {
     margin: 10px;
+  }
+
+  form {
+    max-width: 300px;
+  }
+
+  input, textarea {
+    padding: 6px;
+  }
+
+  button {
+    padding: 8px;
   }
 }
