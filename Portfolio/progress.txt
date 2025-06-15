@@ -3,3 +3,4 @@
 Day 3: Added contact.html with form, made nav columnar  for mobile screen.
 Day 4: Added Google font, Media Query
 Day 5: Enhanced nav with gap, active states, and section hover effects.
+Day 6: Responsiveness for mobile screen

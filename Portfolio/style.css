@@ -215,3 +215,60 @@ button:hover {
     padding: 8px;
   }
 }
+
+/* Project card styles */
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* My custom card shadow */
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.project-image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.project-content {
+  flex: 1;
+}
+
+.project-content h3 {
+  font-size: 1.5rem;
+  color: #1976d2;
+  margin: 0 0 10px;
+}
+
+.project-content p {
+  margin: 0;
+}
+
+/* Responsive project card */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .project-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .project-content h3 {
+    font-size: 1.3rem;
+  }
+}
