@@ -272,3 +272,19 @@ button:hover {
     font-size: 1.3rem;
   }
 }
+
+/* Button styles for toggle */
+#toggle-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+#toggle-button:hover {
+  background-color: #1565c0;
+}
