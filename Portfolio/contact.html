@@ -19,24 +19,32 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
   </header>
   <main>
     <section id="contact">
       <h2>Contact Me</h2>
-      <p>Feel free to reach out with any questions!</p>
-      <form>
+      <p>Reach out to discuss projects or opportunities!</p>
+      <form id="contact-form">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <input type="text" id="name" name="name" required>
+        <span class="error" id="name-error"></span>
+
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <input type="email" id="email" name="email" required>
+        <span class="error" id="email-error"></span>
+
         <label for="message">Message:</label>
-        <textarea id="message" name="message" placeholder="Your message" rows="4" required></textarea>
-        <button type="submit">Send</button>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span class="error" id="message-error"></span>
+
+        <button type="submit">Submit</button>
       </form>
     </section>
   </main>
   <footer>
     <p>© 2025 Shafiul Alam. All rights reserved.</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
