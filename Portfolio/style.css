@@ -225,9 +225,12 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* My custom card shadow */
   border-radius: 8px;
   padding: 20px;
-  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.project-card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 12 px rgba(25, 118, 210, 0.3);
+}
 .project-image {
   max-width: 200px;
   height: auto;
@@ -317,7 +320,9 @@ button:hover {
   background-color: #2c2c2c;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* My custom dark mode shadow */
 }
-
+.dark-mode .project-card:hover{
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
 .dark-mode nav ul li a {
   color: #e0e0e0;
 }
