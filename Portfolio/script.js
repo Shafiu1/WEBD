@@ -79,3 +79,59 @@ if (darkModeToggle) {
         document.body.classList.toggle('dark-mode');
     });
 }
+
+
+// Day 16: Dynamic project cards
+// My custom project data
+const projects = [
+    {
+        title: 'Project One',
+        description: 'A web app built with HTML, CSS, and JavaScript.',
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085'
+    },
+    {
+        title: 'Project Two',
+        description: 'A responsive portfolio website.',
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200'
+    },
+    {
+        title: 'Project Three',
+        description: 'A dynamic task manager app.',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3'
+    }
+  ];
+
+function createProjectCards() {
+    const grid = document.querySelector('.projects-grid');
+    if (!grid) return;
+
+    projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+
+        const img = document.createElement('img');
+        img.className = 'project-image';
+        img.src = project.image;
+        img.alt = project.title;
+
+        const content = document.createElement('div');
+        content.className = 'project-content';
+
+        const title = document.createElement('h3');
+        title.textContent = project.title;
+
+        const description = document.createElement('p');
+        description.textContent = project.description;
+
+        content.appendChild(title);
+        content.appendChild(description);
+        card.appendChild(img);
+        card.appendChild(content);
+        grid.appendChild(card);
+    });
+}
+
+// Run when projects.html loads
+if (document.querySelector('.projects-grid')) {
+    createProjectCards();
+  }
