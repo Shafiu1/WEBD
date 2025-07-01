@@ -1,85 +1,55 @@
-// Day 9: Toggle button logic
-const toggleButton = document.querySelector('#toggle-button');
-const welcomeMessage = document.querySelector('#welcome-message');
+// Day 9: Toggle button message
+document.getElementById('toggle-button')?.addEventListener('click', function () {
+    const message = document.createElement('p');
+    message.textContent = 'Button clicked! This is a dynamic message.';
+    document.querySelector('main').appendChild(message);
+    setTimeout(() => message.remove(), 3000);
+});
 
-// My custom toggle message
-const originalMessage = "Hello, I'm Shafiul Alam. Check out my responsive portfolio!";
-const alternateMessage = "Welcome to my web development journey!";
+// Day 10: Form validation
+document.querySelector('form')?.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const name = document.getElementById('name')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const message = document.getElementById('message')?.value.trim();
+    let isValid = true;
 
-if (toggleButton && welcomeMessage) {
-    toggleButton.addEventListener('click', () => {
-        if (welcomeMessage.textContent === originalMessage) {
-            welcomeMessage.textContent = alternateMessage;
-        } else {
-            welcomeMessage.textContent = originalMessage;
-        }
-    });
-}
+    document.querySelectorAll('.error').forEach(error => error.remove());
 
-// Day 10: Form validation logic
-const contactForm = document.querySelector('#contact-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const messageInput = document.querySelector('#message');
-const nameError = document.querySelector('#name-error');
-const emailError = document.querySelector('#email-error');
-const messageError = document.querySelector('#message-error');
+    if (!name) {
+        showError('name', 'Name is required');
+        isValid = false;
+    }
+    if (!email) {
+        showError('email', 'Email is required');
+        isValid = false;
+    } else if (!email.includes('@')) {
+        showError('email', 'Please enter a valid email');
+        isValid = false;
+    }
+    if (!message) {
+        showError('message', 'Message is required');
+        isValid = false;
+    }
 
-// My custom error messages
-const errorMessages = {
-    name: "Please enter your name",
-    email: "Please enter a valid email address",
-    message: "Please enter your message"
-};
+    if (isValid) {
+        alert('Form submitted successfully!');
+        this.reset();
+    }
+});
 
-if (contactForm && nameInput && emailInput && messageInput && nameError && emailError && messageError) {
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form submission
-
-        let isValid = true;
-
-        // Reset error messages
-        nameError.textContent = '';
-        emailError.textContent = '';
-        messageError.textContent = '';
-
-        // Validate name
-        if (!nameInput.value.trim()) {
-            nameError.textContent = errorMessages.name;
-            isValid = false;
-        }
-
-        // Validate email (basic check for @ and .)
-        if (!emailInput.value.trim() || !emailInput.value.includes('@') || !emailInput.value.includes('.')) {
-            emailError.textContent = errorMessages.email;
-            isValid = false;
-        }
-
-        // Validate message
-        if (!messageInput.value.trim()) {
-            messageError.textContent = errorMessages.message;
-            isValid = false;
-        }
-
-        // If valid, simulate submission
-        if (isValid) {
-            alert('Form submitted successfully! (Simulated)');
-            contactForm.reset(); // Clear form
-        }
-    });
-} else {
-    console.error('Form or input elements not found. Check IDs in contact.html');
+function showError(inputId, message) {
+    const input = document.getElementById(inputId);
+    const error = document.createElement('span');
+    error.className = 'error';
+    error.textContent = message;
+    input.parentNode.appendChild(error);
 }
 
 // Day 11: Dark mode toggle
-const darkModeToggle = document.querySelector('#dark-mode-toggle');
-
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-    });
-}
-
+document.getElementById('dark-mode-toggle')?.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+});
 
 // Day 16: Dynamic project cards
 // My custom project data
@@ -87,32 +57,42 @@ const projects = [
     {
         title: 'Project One',
         description: 'A web app built with HTML, CSS, and JavaScript.',
-        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085'
+        image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=200'
     },
     {
         title: 'Project Two',
         description: 'A responsive portfolio website.',
-        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200'
+        image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=200'
     },
     {
         title: 'Project Three',
         description: 'A dynamic task manager app.',
-        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3'
+        image: 'https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=200'
     }
-  ];
+];
 
 function createProjectCards() {
     const grid = document.querySelector('.projects-grid');
-    if (!grid) return;
+    if (!grid) {
+        console.error('Projects grid not found');
+        return;
+    }
 
-    projects.forEach(project => {
+    console.log('Creating project cards');
+    projects.forEach((project, index) => {
+        console.log(`Creating card ${index}: ${project.image}`);
         const card = document.createElement('div');
         card.className = 'project-card';
+        card.dataset.index = index;
 
         const img = document.createElement('img');
         img.className = 'project-image';
         img.src = project.image;
         img.alt = project.title;
+        img.onerror = () => {
+            console.error(`Failed to load image for ${project.title}: ${project.image}`);
+            img.src = 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=200';
+        };
 
         const content = document.createElement('div');
         content.className = 'project-content';
@@ -131,7 +111,52 @@ function createProjectCards() {
     });
 }
 
+// Day 17: Modal event listeners
+function setupModal() {
+    const modal = document.getElementById('project-modal');
+    const modalImage = document.querySelector('.modal-image');
+    const modalTitle = document.querySelector('.modal-title');
+    const modalDescription = document.querySelector('.modal-description');
+    const modalClose = document.querySelector('.modal-close');
+
+    if (!modal || !modalImage || !modalTitle || !modalDescription || !modalClose) {
+        console.error('Modal elements not found');
+        return;
+    }
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const index = card.dataset.index;
+            console.log(`Opening modal for card ${index}`);
+            const project = projects[index];
+            modalImage.src = project.image;
+            modalImage.alt = project.title;
+            modalImage.onerror = () => {
+                console.error(`Failed to load modal image for ${project.title}: ${project.image}`);
+                modalImage.src = 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=200';
+            };
+            modalTitle.textContent = project.title;
+            modalDescription.textContent = project.description;
+            modal.classList.add('active');
+        });
+    });
+
+    modalClose.addEventListener('click', () => {
+        console.log('Closing modal');
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            console.log('Closing modal via background click');
+            modal.classList.remove('active');
+        }
+    });
+}
+
 // Run when projects.html loads
 if (document.querySelector('.projects-grid')) {
+    console.log('Initializing projects page');
     createProjectCards();
+    setupModal();
   }
