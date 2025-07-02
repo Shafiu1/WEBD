@@ -35,6 +35,7 @@ document.querySelector('form')?.addEventListener('submit', function (event) {
     if (isValid) {
         alert('Form submitted successfully!');
         this.reset();
+        localStorage.removeItem('contactFormData');
     }
 });
 
@@ -154,9 +155,48 @@ function setupModal() {
     });
 }
 
-// Run when projects.html loads
-if (document.querySelector('.projects-grid')) {
+  //Day 18: Local storage for contact form.
+  //my custom local storage logic
+
+  function setupFormPersistence(){
+    const form= document.getElementById('contact-form');
+    if(!form){
+        console.log('Contact form not found!404');
+        return;
+    }
+
+    const nameInput = document.getElementById('name');
+    const emailInput=document.getElementById('email');
+    const messageInput=document.getElementById('message');
+
+    //load saved data on page load
+    const savedData = localStorage.getItem('contactFormData');
+    if(savedData){
+        const formData=JSON.parse(savedData);
+        nameInput.value=formData.name || '';
+        emailInput.value=formData.email || '';
+        messageInput.value=formData.message || '';
+        console.log('Loaded form data from localStorage:', formData);
+    }
+
+    form.addEventListener('input',()=>{
+        const formData={
+            name:nameInput.value.trim(),
+            email:emailInput.value.trim(),
+            message:messageInput.value.trim()
+        };
+        localStorage.setItem('contactFormData',JSON.stringify(formData));
+        console.log('Saved form data to localStorage:', formData);
+    })
+  }
+
+  //Run page-specific logic
+  if(document.querySelector('.projects-grid')){
     console.log('Initializing projects page');
     createProjectCards();
     setupModal();
+  }
+  if(document.getElementById('contact-form')) {
+    console.log('Initializing contact form');
+    setupFormPersistence();
   }
