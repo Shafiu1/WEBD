@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio - Contact</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +12,7 @@
 <body>
   <header>
     <h1>My Portfolio</h1>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -19,25 +20,18 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
-    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
   </header>
   <main>
     <section id="contact">
       <h2>Contact Me</h2>
-      <p>Reach out to discuss projects or opportunities!</p>
-      <form id="contact-form">
+      <form id="contact-form" role="form" aria-label="Contact form">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <span class="error" id="name-error"></span>
-
+        <input type="text" id="name" name="name" required aria-required="true">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <span class="error" id="email-error"></span>
-
+        <input type="email" id="email" name="email" required aria-required="true">
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <span class="error" id="message-error"></span>
-
+        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
         <button type="submit">Submit</button>
       </form>
     </section>

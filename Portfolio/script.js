@@ -33,7 +33,7 @@ document.querySelector('form')?.addEventListener('submit', function (event) {
     }
 
     if (isValid) {
-        alert('Form submitted successfully!');
+        alert('Thanks for your message!'); // Day 18: Custom alert
         this.reset();
         localStorage.removeItem('contactFormData');
     }
@@ -85,6 +85,8 @@ function createProjectCards() {
         const card = document.createElement('div');
         card.className = 'project-card';
         card.dataset.index = index;
+        card.setAttribute('role', 'button'); // Day 19: Accessibility
+        card.setAttribute('aria-label', `View details for ${project.title}`);
 
         const img = document.createElement('img');
         img.className = 'project-image';
@@ -112,7 +114,7 @@ function createProjectCards() {
     });
 }
 
-// Day 17: Modal event listeners
+// Day 17 & 19: Modal event listeners with accessibility
 function setupModal() {
     const modal = document.getElementById('project-modal');
     const modalImage = document.querySelector('.modal-image');
@@ -139,6 +141,7 @@ function setupModal() {
             modalTitle.textContent = project.title;
             modalDescription.textContent = project.description;
             modal.classList.add('active');
+            modal.focus(); // Day 19: Accessibility
         });
     });
 
@@ -153,50 +156,58 @@ function setupModal() {
             modal.classList.remove('active');
         }
     });
+
+    // Day 19: Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            console.log('Closing modal via Escape key');
+            modal.classList.remove('active');
+        }
+    });
 }
 
-  //Day 18: Local storage for contact form.
-  //my custom local storage logic
-
-  function setupFormPersistence(){
-    const form= document.getElementById('contact-form');
-    if(!form){
-        console.log('Contact form not found!404');
+// Day 18: Local storage for contact form
+// My custom local storage logic
+function setupFormPersistence() {
+    const form = document.getElementById('contact-form');
+    if (!form) {
+        console.log('Contact form not found');
         return;
     }
 
     const nameInput = document.getElementById('name');
-    const emailInput=document.getElementById('email');
-    const messageInput=document.getElementById('message');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
 
-    //load saved data on page load
+    // Load saved data on page load
     const savedData = localStorage.getItem('contactFormData');
-    if(savedData){
-        const formData=JSON.parse(savedData);
-        nameInput.value=formData.name || '';
-        emailInput.value=formData.email || '';
-        messageInput.value=formData.message || '';
+    if (savedData) {
+        const formData = JSON.parse(savedData);
+        nameInput.value = formData.name || '';
+        emailInput.value = formData.email || '';
+        messageInput.value = formData.message || '';
         console.log('Loaded form data from localStorage:', formData);
     }
 
-    form.addEventListener('input',()=>{
-        const formData={
-            name:nameInput.value.trim(),
-            email:emailInput.value.trim(),
-            message:messageInput.value.trim()
+    // Save data on input change
+    form.addEventListener('input', () => {
+        const formData = {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            message: messageInput.value.trim()
         };
-        localStorage.setItem('contactFormData',JSON.stringify(formData));
+        localStorage.setItem('contactFormData', JSON.stringify(formData));
         console.log('Saved form data to localStorage:', formData);
-    })
-  }
+    });
+}
 
-  //Run page-specific logic
-  if(document.querySelector('.projects-grid')){
+// Run page-specific logic
+if (document.querySelector('.projects-grid')) {
     console.log('Initializing projects page');
     createProjectCards();
     setupModal();
-  }
-  if(document.getElementById('contact-form')) {
+}
+if (document.getElementById('contact-form')) {
     console.log('Initializing contact form');
     setupFormPersistence();
   }

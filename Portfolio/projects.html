@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio - Projects</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1>My Portfolio</h1>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -18,15 +19,15 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
   </header>
   <main>
     <section>
       <h2>My Projects</h2>
       <div class="projects-grid"></div>
-      <div class="modal" id="project-modal">
+      <div class="modal" id="project-modal" role="dialog" aria-label="Project details modal">
         <div class="modal-content">
-          <span class="modal-close">&times;</span>
+          <span class="modal-close" aria-label="Close modal">×</span>
           <img class="modal-image" src="" alt="">
           <h3 class="modal-title"></h3>
           <p class="modal-description"></p>

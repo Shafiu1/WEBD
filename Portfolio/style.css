@@ -1,6 +1,5 @@
 /* Day 15: Define custom properties */
 :root {
-  /* My custom variables */
   --primary-blue: #1976d2;
   --primary-blue-dark: #1565c0;
   --accent-red: #d32f2f;
@@ -23,6 +22,8 @@
   --font-size-h2: 2rem;
   --font-size-h3: 1.5rem;
   --border-radius: 5px;
+  --line-height-body: 1.7; /* Day 19: Improved line height */
+  --spacing-section: 30px; /* Day 19: Section spacing */
 }
 
 /* Day 5: Base styles */
@@ -34,7 +35,7 @@
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   color: var(--text-dark);
 }
 
@@ -47,6 +48,7 @@ header {
 h1 {
   font-size: var(--font-size-h1);
   color: var(--primary-blue);
+  margin-bottom: 15px; /* Day 19: Improved spacing */
 }
 
 nav ul {
@@ -82,7 +84,7 @@ main {
 }
 
 section {
-  margin-bottom: 40px;
+  margin-bottom: var(--spacing-section);
   padding: 20px;
   background-color: var(--section-bg);
   border: 1px solid var(--border-grey);
@@ -92,7 +94,7 @@ section {
 h2 {
   font-size: var(--font-size-h2);
   color: var(--primary-blue);
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Day 19: Improved spacing */
 }
 
 footer {
@@ -124,6 +126,7 @@ footer {
 
   section {
     padding: 15px;
+    margin-bottom: 20px; /* Day 19: Adjusted for responsiveness */
   }
 }
 
@@ -141,7 +144,7 @@ footer {
   }
 
   section {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 
@@ -165,6 +168,7 @@ textarea {
   border: 1px solid var(--border-grey);
   border-radius: var(--border-radius);
   font-size: 1rem;
+  line-height: var(--line-height-body); /* Day 19: Improved readability */
 }
 
 button[type="submit"] {
@@ -333,7 +337,8 @@ footer::before {
   box-shadow: 0 4px 8px var(--shadow-light);
   border-radius: 8px;
   padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform, box-shadow;
 }
 
 .project-card:hover {
@@ -345,6 +350,7 @@ footer::before {
   max-width: 200px;
   height: auto;
   border-radius: var(--border-radius);
+  display: block;
 }
 
 .project-content {
@@ -359,10 +365,11 @@ footer::before {
 
 .project-content p {
   margin: 0;
+  line-height: var(--line-height-body); /* Day 19: Improved readability */
 }
 
 /* Day 17: Modal styles */
-/* My custom modal styles */
+/* My custom polish styles */
 .modal {
   display: none;
   position: fixed;
@@ -408,6 +415,7 @@ footer::before {
   height: auto;
   border-radius: var(--border-radius);
   margin-bottom: 15px;
+  display: block;
 }
 
 .modal-title {
@@ -418,6 +426,7 @@ footer::before {
 
 .modal-description {
   margin: 0;
+  line-height: var(--line-height-body); /* Day 19: Improved readability */
 }
 
 .dark-mode .modal-content {
