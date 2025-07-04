@@ -22,8 +22,8 @@
   --font-size-h2: 2rem;
   --font-size-h3: 1.5rem;
   --border-radius: 5px;
-  --line-height-body: 1.7; /* Day 19: Improved line height */
-  --spacing-section: 30px; /* Day 19: Section spacing */
+  --line-height-body: 1.7;
+  --spacing-section: 30px;
 }
 
 /* Day 5: Base styles */
@@ -48,7 +48,7 @@ header {
 h1 {
   font-size: var(--font-size-h1);
   color: var(--primary-blue);
-  margin-bottom: 15px; /* Day 19: Improved spacing */
+  margin-bottom: 15px;
 }
 
 nav ul {
@@ -94,7 +94,7 @@ section {
 h2 {
   font-size: var(--font-size-h2);
   color: var(--primary-blue);
-  margin-bottom: 15px; /* Day 19: Improved spacing */
+  margin-bottom: 15px;
 }
 
 footer {
@@ -126,7 +126,7 @@ footer {
 
   section {
     padding: 15px;
-    margin-bottom: 20px; /* Day 19: Adjusted for responsiveness */
+    margin-bottom: 20px;
   }
 }
 
@@ -168,7 +168,7 @@ textarea {
   border: 1px solid var(--border-grey);
   border-radius: var(--border-radius);
   font-size: 1rem;
-  line-height: var(--line-height-body); /* Day 19: Improved readability */
+  line-height: var(--line-height-body);
 }
 
 button[type="submit"] {
@@ -365,7 +365,7 @@ footer::before {
 
 .project-content p {
   margin: 0;
-  line-height: var(--line-height-body); /* Day 19: Improved readability */
+  line-height: var(--line-height-body);
 }
 
 /* Day 17: Modal styles */
@@ -426,7 +426,7 @@ footer::before {
 
 .modal-description {
   margin: 0;
-  line-height: var(--line-height-body); /* Day 19: Improved readability */
+  line-height: var(--line-height-body);
 }
 
 .dark-mode .modal-content {
@@ -444,6 +444,49 @@ footer::before {
 
 .dark-mode .modal-title {
   color: var(--primary-blue);
+}
+
+/* Day 20: Filter button styles */
+/* My custom filter button styles */
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background-color: var(--section-bg);
+  border: 1px solid var(--primary-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--primary-blue);
+}
+
+.filter-btn:hover {
+  background-color: var(--light-blue-bg);
+}
+
+.filter-btn.active {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.dark-mode .filter-btn {
+  background-color: var(--dark-section-bg);
+  border-color: var(--primary-blue);
+  color: var(--light-grey-text);
+}
+
+.dark-mode .filter-btn:hover {
+  background-color: var(--light-blue-bg);
+}
+
+.dark-mode .filter-btn.active {
+  background-color: var(--primary-blue);
+  color: white;
 }
 
 /* Day 12 & 13: Responsive project grid and cards */
@@ -468,6 +511,11 @@ footer::before {
     width: 95%;
     padding: 15px;
   }
+
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -490,5 +538,10 @@ footer::before {
 
   .modal-title {
     font-size: 1.3rem;
+  }
+
+  .filter-btn {
+    width: 100%;
+    text-align: center;
   }
 }

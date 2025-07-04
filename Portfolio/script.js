@@ -33,7 +33,7 @@ document.querySelector('form')?.addEventListener('submit', function (event) {
     }
 
     if (isValid) {
-        alert('Thanks for your message!'); // Day 18: Custom alert
+        alert('Thanks for your message!');
         this.reset();
         localStorage.removeItem('contactFormData');
     }
@@ -52,40 +52,49 @@ document.getElementById('dark-mode-toggle')?.addEventListener('click', function 
     document.body.classList.toggle('dark-mode');
 });
 
-// Day 16: Dynamic project cards
+// Day 16 & 20: Dynamic project cards with categories
 // My custom project data
 const projects = [
     {
         title: 'Project One',
         description: 'A web app built with HTML, CSS, and JavaScript.',
-        image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=200'
+        image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=200',
+        category: 'web-apps'
     },
     {
         title: 'Project Two',
         description: 'A responsive portfolio website.',
-        image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=200'
+        image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=200',
+        category: 'portfolios'
     },
     {
         title: 'Project Three',
         description: 'A dynamic task manager app.',
-        image: 'https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=200'
+        image: 'https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=200',
+        category: 'web-apps'
     }
 ];
 
-function createProjectCards() {
+function createProjectCards(filter = 'all') {
     const grid = document.querySelector('.projects-grid');
     if (!grid) {
         console.error('Projects grid not found');
         return;
     }
 
-    console.log('Creating project cards');
-    projects.forEach((project, index) => {
+    // Clear existing cards
+    grid.innerHTML = '';
+    console.log(`Creating project cards with filter: ${filter}`);
+
+    // Filter projects
+    const filteredProjects = filter === 'all' ? projects : projects.filter(project => project.category === filter);
+
+    filteredProjects.forEach((project, index) => {
         console.log(`Creating card ${index}: ${project.image}`);
         const card = document.createElement('div');
         card.className = 'project-card';
-        card.dataset.index = index;
-        card.setAttribute('role', 'button'); // Day 19: Accessibility
+        card.dataset.index = projects.indexOf(project); // Use original index for modal
+        card.setAttribute('role', 'button');
         card.setAttribute('aria-label', `View details for ${project.title}`);
 
         const img = document.createElement('img');
@@ -141,7 +150,7 @@ function setupModal() {
             modalTitle.textContent = project.title;
             modalDescription.textContent = project.description;
             modal.classList.add('active');
-            modal.focus(); // Day 19: Accessibility
+            modal.focus();
         });
     });
 
@@ -157,7 +166,6 @@ function setupModal() {
         }
     });
 
-    // Day 19: Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             console.log('Closing modal via Escape key');
@@ -179,7 +187,6 @@ function setupFormPersistence() {
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
 
-    // Load saved data on page load
     const savedData = localStorage.getItem('contactFormData');
     if (savedData) {
         const formData = JSON.parse(savedData);
@@ -189,7 +196,6 @@ function setupFormPersistence() {
         console.log('Loaded form data from localStorage:', formData);
     }
 
-    // Save data on input change
     form.addEventListener('input', () => {
         const formData = {
             name: nameInput.value.trim(),
@@ -201,11 +207,41 @@ function setupFormPersistence() {
     });
 }
 
+// Day 20: Project filtering
+// My custom project filtering logic
+function setupProjectFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (!filterButtons.length) {
+        console.log('Filter buttons not found');
+        return;
+    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            console.log(`Filtering projects by ${filter}`);
+
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
+
+            // Recreate project cards with filter
+            createProjectCards(filter);
+            setupModal(); // Re-attach modal event listeners
+        });
+    });
+}
+
 // Run page-specific logic
 if (document.querySelector('.projects-grid')) {
     console.log('Initializing projects page');
     createProjectCards();
     setupModal();
+    setupProjectFiltering();
 }
 if (document.getElementById('contact-form')) {
     console.log('Initializing contact form');
