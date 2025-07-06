@@ -4,8 +4,8 @@ import Home from './Home.jsx';
 import About from './About.jsx';
 import Projects from './Projects.jsx';
 import Contact from './Contact.jsx';
+import Skills from './Skills.jsx';
 import './index.css';
-import '../public/style.css'; // Global CSS import
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/skills" element={<Skills />} />
         </Routes>
       </main>
       <footer>

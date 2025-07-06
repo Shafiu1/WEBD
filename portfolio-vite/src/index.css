@@ -592,3 +592,65 @@ footer::before {
     text-align: center;
   }
 }
+
+
+/*Fade -in animations for sections*/
+section{
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity: 0;transform: translateY(10px);}
+  to{opacity: 1;transform: translateY(0);}
+}
+
+/* //Enhanced project card :hover */
+.project-card{
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,background-color 0.3s ease-out;
+}
+
+.project-card:hover{
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 8px 16px var(--shadow-hover);
+  background-color: var(--light-blue-bg);
+}
+
+.dark-mode .project-card:hover{
+  background-color: var(--light-blue-bg);
+}
+
+
+/* styling skills-page*/
+.skills-section ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.skills-section li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: var(--light-blue-bg);
+  border-radius: var(--border-radius);
+  text-align: left;
+}
+
+.dark-mode .skills-section li {
+  background-color: var(--dark-section-bg);
+  color: var(--light-grey-text);
+}
+
+@media (max-width: 768px) {
+  .skills-section ul {
+    max-width: 100%;
+  }
+}
+
+.skills-section li {
+  transition: transform 0.2s ease-out;
+}
+.skills-section li:hover {
+  transform: translateX(10px);
+}
