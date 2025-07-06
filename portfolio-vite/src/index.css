@@ -654,3 +654,34 @@ section{
 .skills-section li:hover {
   transform: translateX(10px);
 }
+/* success message syling*/
+.success-message {
+  color: var(--primary-blue);
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.dark-mode .success-message {
+  color: var(--light-blue-dark);
+}
+
+/* Header fade-in */
+header {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+/* Button hover animation */
+button, .filter-btn {
+  transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+button:hover, .filter-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--light-blue-bg);
+}
+
+.dark-mode button:hover, .dark-mode .filter-btn:hover {
+  background-color: var(--light-blue-bg);
+}
