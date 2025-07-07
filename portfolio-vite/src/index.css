@@ -793,3 +793,50 @@ button:hover, .filter-btn:hover {
 .dark-mode .blog-section p {
   color: var(--light-grey-text);
 }
+
+.blog-content {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.blog-search {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-grey);
+  border-radius: var(--border-radius);
+  background-color: var(--section-bg);
+  color: var(--text-dark);
+}
+
+.blog-search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 5px var(--shadow-hover);
+}
+
+.dark-mode .blog-search-input {
+  background-color: var(--dark-section-bg);
+  color: var(--light-grey-text);
+  border-color: var(--dark-border);
+}
+
+.dark-mode .blog-search-input:focus {
+  border-color: var(--light-blue-dark);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

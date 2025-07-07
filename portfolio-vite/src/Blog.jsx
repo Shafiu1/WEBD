@@ -3,6 +3,8 @@ import ReactGA from 'react-ga4';
 
 function Blog() {
     const [posts, setPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const [selectedPost, setSelectedPost] = useState(null);
     const [error, setError] = useState(null);
 
@@ -14,6 +16,7 @@ function Blog() {
             })
             .then((data) => {
                 setPosts(data);
+                setFilteredPosts(data); // Initialize with all posts
                 console.log('Fetched posts:', data);
             })
             .catch((err) => {
@@ -22,15 +25,47 @@ function Blog() {
             });
     }, []);
 
+    useEffect(() => {
+        const filtered = posts.filter(
+            (post) =>
+                post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredPosts(filtered);
+    }, [searchQuery, posts]);
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        ReactGA.event({
+            category: 'Blog',
+            action: 'Search',
+            label: e.target.value
+        });
+    };
+
     return (
         <section className="blog-section">
             <h2>My Blog</h2>
+            <div className="blog-search">
+                <label htmlFor="blog-search" className="sr-only">
+                    Search blog posts
+                </label>
+                <input
+                    type="text"
+                    id="blog-search"
+                    placeholder="Search posts..."
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    aria-label="Search blog posts"
+                    className="blog-search-input"
+                />
+            </div>
             {error && <p className="error">Error: {error}</p>}
             <div className="blog-posts">
-                {posts.length === 0 && !error ? (
-                    <p>Loading posts...</p>
+                {filteredPosts.length === 0 && !error ? (
+                    <p>{searchQuery ? 'No posts found' : 'Loading posts...'}</p>
                 ) : (
-                    posts.map((post) => (
+                    filteredPosts.map((post) => (
                         <div key={post.id} className="blog-post">
                             <h3>{post.title}</h3>
                             <p className="blog-date">{post.date}</p>

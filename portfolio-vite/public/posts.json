@@ -26,5 +26,11 @@
         "excerpt":"Optimizing React apps for search engines.",
         "content":"This post covers meta tags and Open Graph...",
         "date":"July 3, 2025"
+    },
+    { 
+        "id": 5, 
+        "title": "JavaScript Tips", 
+        "excerpt": "Best practices for JS.", 
+        "content": "This post covers ES6+ features...", "date": "July 2, 2025" 
     }
   ]
