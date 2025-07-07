@@ -19,5 +19,12 @@
       "excerpt": "How to deploy a React app to Netlify.",
       "content": "This post explains the steps to deploy a Vite-based React app to Netlify, including build settings and continuous deployment.",
       "date": "July 4, 2025"
+    },
+    {
+        "id":4,
+        "title":"SEO for React Apps",
+        "excerpt":"Optimizing React apps for search engines.",
+        "content":"This post covers meta tags and Open Graph...",
+        "date":"July 3, 2025"
     }
   ]
