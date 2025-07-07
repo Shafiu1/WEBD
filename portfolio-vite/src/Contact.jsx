@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -38,10 +39,15 @@ function Contact() {
         if (Object.keys(newErrors).length === 0) {
             localStorage.setItem('contactForm', JSON.stringify(formData));
             console.log('Form submitted:', formData);
+            ReactGA.event({
+                category: 'Form',
+                action: 'Submit',
+                label: 'Contact Form Submission'
+            });
             setSubmitted(true);
             setTimeout(() => {
-                navigate('/');
-            }, 2000); // Redirect after 2s to show success message
+                navigate('/projects');
+            }, 2000);
         } else {
             setErrors(newErrors);
         }
