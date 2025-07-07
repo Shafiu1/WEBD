@@ -772,3 +772,24 @@ button:hover, .filter-btn:hover {
   opacity: 0;
   animation: fadeIn 0.5s ease-in forwards;
 }
+
+/* //add loading/error styles */
+
+.blog-section .error {
+  color: var(--accent-red);
+  text-align: center;
+  margin: 20px 0;
+}
+
+.dark-mode .blog-section .error {
+  color: var(--accent-red-dark);
+}
+
+.blog-section p {
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.dark-mode .blog-section p {
+  color: var(--light-grey-text);
+}

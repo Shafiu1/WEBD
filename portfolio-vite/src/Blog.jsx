@@ -1,63 +1,69 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-const posts = [
-    {
-        id: 1,
-        title: 'Building a React Portfolio',
-        excerpt: 'How I created a responsive portfolio using React and Vite.',
-        content: 'This post details my journey of building a portfolio with React Router, Netlify Forms, and animations...',
-        date: 'July 6, 2025',
-    },
-    {
-        id: 2,
-        title: 'Mastering CSS Animations',
-        excerpt: 'Tips for creating smooth animations in CSS.',
-        content: 'Learn how to use CSS keyframes for fade-in and hover effects...',
-        date: 'July 5, 2025',
-    },
-    {
-        id:3,
-        title:'Deploying to Netlify',
-        excerpt:'How to deploy a React app...',
-        content:'Steps to deploy using Netlify...',
-        date:'July 4, 2025',
-    },
-];
+import { useState, useEffect } from 'react';
+import ReactGA from 'react-ga4';
 
 function Blog() {
+    const [posts, setPosts] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('/posts.json')
+            .then((response) => {
+                if (!response.ok) throw new Error('Failed to fetch posts');
+                return response.json();
+            })
+            .then((data) => {
+                setPosts(data);
+                console.log('Fetched posts:', data);
+            })
+            .catch((err) => {
+                setError(err.message);
+                console.error('Error fetching posts:', err);
+            });
+    }, []);
 
     return (
         <section className="blog-section">
             <h2>My Blog</h2>
+            {error && <p className="error">Error: {error}</p>}
             <div className="blog-posts">
-                {posts.map((post) => (
-                    <div key={post.id} className="blog-post">
-                        <h3>{post.title}</h3>
-                        <p className="blog-date">{post.date}</p>
-                        <p>{post.excerpt}</p>
-                        <button
-                            className="blog-read-more"
-                            onClick={() => setSelectedPost(post)}
-                            aria-label={`Read more about ${post.title}`}
-                        >
-                            Read More
-                        </button>
-                        {selectedPost?.id === post.id && (
-                            <div className="blog-content">
-                                <p>{post.content}</p>
-                                <button
-                                    className="blog-close"
-                                    onClick={() => setSelectedPost(null)}
-                                    aria-label="Close blog post"
-                                >
-                                    Close
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                ))}
+                {posts.length === 0 && !error ? (
+                    <p>Loading posts...</p>
+                ) : (
+                    posts.map((post) => (
+                        <div key={post.id} className="blog-post">
+                            <h3>{post.title}</h3>
+                            <p className="blog-date">{post.date}</p>
+                            <p>{post.excerpt}</p>
+                            <button
+                                className="blog-read-more"
+                                onClick={() => {
+                                    setSelectedPost(post);
+                                    ReactGA.event({
+                                        category: 'Blog',
+                                        action: 'Read More',
+                                        label: post.title
+                                    });
+                                }}
+                                aria-label={`Read more about ${post.title}`}
+                            >
+                                Read More
+                            </button>
+                            {selectedPost?.id === post.id && (
+                                <div className="blog-content">
+                                    <p>{post.content}</p>
+                                    <button
+                                        className="blog-close"
+                                        onClick={() => setSelectedPost(null)}
+                                        aria-label="Close blog post"
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                )}
             </div>
         </section>
     );
