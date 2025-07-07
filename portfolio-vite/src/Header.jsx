@@ -36,6 +36,11 @@ function Header() {
                             Contact
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/blog" className={({ isActive }) => (isActive ? 'active' : '')}>
+                            Blog
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
             <button

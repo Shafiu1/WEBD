@@ -5,6 +5,7 @@ import About from './About.jsx';
 import Projects from './Projects.jsx';
 import Contact from './Contact.jsx';
 import Skills from './Skills.jsx';
+import Blog from './Blog.jsx';
 import './index.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/skills" element={<Skills />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </main>
       <footer>
