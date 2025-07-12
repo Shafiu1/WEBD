@@ -1,36 +1,26 @@
 [
-    {
-      "id": 1,
-      "title": "Building a React Portfolio",
-      "excerpt": "How I created a responsive portfolio using React and Vite.",
-      "content": "This post details my journey of building a portfolio with React Router, Netlify Forms, and animations. I learned to use Vite for fast development and Netlify for seamless deployment.",
-      "date": "July 6, 2025"
-    },
-    {
-      "id": 2,
-      "title": "Mastering CSS Animations",
-      "excerpt": "Tips for creating smooth animations in CSS.",
-      "content": "Learn how to use CSS keyframes for fade-in and hover effects. This post covers best practices for performance and accessibility.",
-      "date": "July 5, 2025"
-    },
-    {
-      "id": 3,
-      "title": "Deploying to Netlify",
-      "excerpt": "How to deploy a React app to Netlify.",
-      "content": "This post explains the steps to deploy a Vite-based React app to Netlify, including build settings and continuous deployment.",
-      "date": "July 4, 2025"
-    },
-    {
-        "id":4,
-        "title":"SEO for React Apps",
-        "excerpt":"Optimizing React apps for search engines.",
-        "content":"This post covers meta tags and Open Graph...",
-        "date":"July 3, 2025"
-    },
-    { 
-        "id": 5, 
-        "title": "JavaScript Tips", 
-        "excerpt": "Best practices for JS.", 
-        "content": "This post covers ES6+ features...", "date": "July 2, 2025" 
-    }
-  ]
+  {
+    "id": 1,
+    "title": "Building a React Portfolio",
+    "excerpt": "How I created a responsive portfolio using React and Vite.",
+    "content": "This post details my journey of building a portfolio with React Router, Netlify Forms, and animations...",
+    "date": "July 6, 2025",
+    "image": "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=200"
+  },
+  {
+    "id": 2,
+    "title": "Mastering CSS Animations",
+    "excerpt": "Tips for creating smooth animations in CSS.",
+    "content": "Learn how to use CSS keyframes for fade-in and hover effects...",
+    "date": "July 5, 2025",
+    "image": "https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg?auto=compress&cs=tinysrgb&w=200"
+  },
+  {
+    "id": 3,
+    "title": "Deploying to Netlify",
+    "excerpt": "How to deploy a React app to Netlify.",
+    "content": "This post explains the steps to deploy a Vite-based React app to Netlify...",
+    "date": "July 4, 2025",
+    "image": "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=200"
+  }
+]

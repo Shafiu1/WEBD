@@ -840,3 +840,24 @@ button:hover, .filter-btn:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.blog-post img,
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+}
+
+.project-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.projects-section__modal img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+}

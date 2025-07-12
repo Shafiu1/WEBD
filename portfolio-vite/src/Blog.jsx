@@ -16,7 +16,7 @@ function Blog() {
             })
             .then((data) => {
                 setPosts(data);
-                setFilteredPosts(data); // Initialize with all posts
+                setFilteredPosts(data);
                 console.log('Fetched posts:', data);
             })
             .catch((err) => {
@@ -67,6 +67,7 @@ function Blog() {
                 ) : (
                     filteredPosts.map((post) => (
                         <div key={post.id} className="blog-post">
+                            {post.image && <img src={post.image} alt={post.title} loading="lazy" />}
                             <h3>{post.title}</h3>
                             <p className="blog-date">{post.date}</p>
                             <p>{post.excerpt}</p>
@@ -86,6 +87,7 @@ function Blog() {
                             </button>
                             {selectedPost?.id === post.id && (
                                 <div className="blog-content">
+                                    {post.image && <img src={post.image} alt={post.title} loading="lazy" />}
                                     <p>{post.content}</p>
                                     <button
                                         className="blog-close"
